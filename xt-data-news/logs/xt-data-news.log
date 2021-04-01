@@ -1,0 +1,294 @@
+2021-04-01 06:35:51.137  WARN 176896 --- [AMQP Connection 192.168.2.3:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured (Exception message: Connection reset)
+2021-04-01 06:35:51.699  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@685ad79e: tags=[[amq.ctag-UvpFMW6lKwFDgb6QC88kAA]], channel=Cached Rabbit Channel: AMQChannel(amqp://data-news@192.168.2.3:5672//common,1), conn: Proxy@60d8fd31 Shared Rabbit Connection: SimpleConnection@112cd77b [delegate=amqp://data-news@192.168.2.3:5672//common, localPort= 54083], acknowledgeMode=AUTO local queue size=0
+2021-04-01 06:35:51.701  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 06:35:51.760  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@3932c6c: tags=[[amq.ctag-H0liL4ZUs63Vp14iJXGMag]], channel=Cached Rabbit Channel: AMQChannel(amqp://data-news@192.168.2.3:5672//common,2), conn: Proxy@60d8fd31 Shared Rabbit Connection: null, acknowledgeMode=AUTO local queue size=0
+2021-04-01 06:35:56.734  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 06:35:56.736 ERROR 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:724) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createBareChannel(CachingConnectionFactory.java:675) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.getCachedChannelProxy(CachingConnectionFactory.java:649) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.getChannel(CachingConnectionFactory.java:539) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.access$1600(CachingConnectionFactory.java:99) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory$ChannelCachingConnectionProxy.createChannel(CachingConnectionFactory.java:1413) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2138) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2105) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2085) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:407) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:391) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1890) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1871) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1346) [spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1192) [spring-rabbit-2.3.5.jar:2.3.5]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1139) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1087) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1255) ~[amqp-client-5.10.0.jar:5.10.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectHostPort(AbstractConnectionFactory.java:651) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:616) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	... 16 common frames omitted
+
+2021-04-01 06:35:56.736 ERROR 176896 --- [AMQP Connection 192.168.2.3:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured
+
+java.net.SocketException: Socket Closed
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265) ~[na:1.8.0_241]
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288) ~[na:1.8.0_241]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665) ~[amqp-client-5.10.0.jar:5.10.0]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+
+2021-04-01 06:36:01.859  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 06:36:01.859 ERROR 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:724) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:214) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2132) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2105) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2085) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:407) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:391) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1890) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1871) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1346) [spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1192) [spring-rabbit-2.3.5.jar:2.3.5]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1139) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1087) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1255) ~[amqp-client-5.10.0.jar:5.10.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectHostPort(AbstractConnectionFactory.java:651) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:616) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	... 12 common frames omitted
+
+2021-04-01 06:36:01.860 ERROR 176896 --- [AMQP Connection 192.168.2.3:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured
+
+java.net.SocketException: Socket Closed
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265) ~[na:1.8.0_241]
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288) ~[na:1.8.0_241]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665) ~[amqp-client-5.10.0.jar:5.10.0]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+
+2021-04-01 06:36:06.876  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 06:36:06.876 ERROR 176896 --- [AMQP Connection 192.168.2.3:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured
+
+java.net.SocketException: Socket Closed
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265) ~[na:1.8.0_241]
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288) ~[na:1.8.0_241]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665) ~[amqp-client-5.10.0.jar:5.10.0]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+
+2021-04-01 06:36:11.892  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@7d7c2d59: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2021-04-01 06:36:11.896  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 06:36:11.896 ERROR 176896 --- [AMQP Connection 192.168.2.3:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured
+
+java.net.SocketException: Socket Closed
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265) ~[na:1.8.0_241]
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288) ~[na:1.8.0_241]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665) ~[amqp-client-5.10.0.jar:5.10.0]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+
+2021-04-01 06:36:16.900 ERROR 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:724) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:214) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2132) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2105) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2085) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:407) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:391) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1890) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1871) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1346) [spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1192) [spring-rabbit-2.3.5.jar:2.3.5]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1139) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1087) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1255) ~[amqp-client-5.10.0.jar:5.10.0]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectHostPort(AbstractConnectionFactory.java:651) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:616) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.3.5.jar:2.3.5]
+	... 12 common frames omitted
+
+2021-04-01 06:36:16.900  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 06:36:16.900 ERROR 176896 --- [AMQP Connection 192.168.2.3:5672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occured
+
+java.net.SocketException: Socket Closed
+	at java.net.SocketInputStream.socketRead0(Native Method) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:171) ~[na:1.8.0_241]
+	at java.net.SocketInputStream.read(SocketInputStream.java:141) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246) ~[na:1.8.0_241]
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265) ~[na:1.8.0_241]
+	at java.io.DataInputStream.readUnsignedByte(DataInputStream.java:288) ~[na:1.8.0_241]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184) ~[amqp-client-5.10.0.jar:5.10.0]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665) ~[amqp-client-5.10.0.jar:5.10.0]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_241]
+
+2021-04-01 06:36:16.911  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@153c469c: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2021-04-01 06:36:18.032  INFO 176896 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Created new connection: xtCommonRabbitConnectionFactory#181012a1:6/SimpleConnection@1c2638ff [delegate=amqp://data-news@192.168.2.3:5672//common, localPort= 57166]
+2021-04-01 10:49:24.179  INFO 268412 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : Starting DataNewsApplication using Java 1.8.0_241 on PC-20200618SSUW with PID 268412 (G:\xt-data-news\com.xt.data.news\com.xt.data.news.app\target\classes started by Administrator in G:\xt-data-news)
+2021-04-01 10:49:24.183 DEBUG 268412 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : Running with Spring Boot v2.4.3, Spring v5.3.4
+2021-04-01 10:49:24.184  INFO 268412 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : No active profile set, falling back to default profiles: default
+2021-04-01 10:49:24.371  INFO 268412 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-01 10:49:24.371  INFO 268412 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-01 10:49:25.789  INFO 268412 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-01 10:49:25.811  INFO 268412 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 JPA repository interfaces.
+2021-04-01 10:49:26.081  INFO 268412 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=48b605b0-fa7f-308f-9f11-59da71d67a5f
+2021-04-01 10:49:26.264  INFO 268412 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@650d381c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-01 10:49:26.270  INFO 268412 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-01 10:49:26.735  INFO 268412 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 6600 (http)
+2021-04-01 10:49:26.745  INFO 268412 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-01 10:49:26.746  INFO 268412 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-04-01 10:49:26.856  INFO 268412 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-01 10:49:26.857  INFO 268412 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2483 ms
+2021-04-01 10:49:27.017  INFO 268412 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter securityAuthenticationTokenFilter was not registered (disabled)
+2021-04-01 10:49:27.140  INFO 268412 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 7.1.1 by Redgate
+2021-04-01 10:49:27.148  INFO 268412 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-01 10:49:27.150  WARN 268412 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2021-04-01 10:49:27.490  INFO 268412 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-01 10:49:27.517  INFO 268412 --- [restartedMain] o.f.c.i.database.base.DatabaseType       : Database: jdbc:mysql://192.168.2.127:3306/db_data_news (MySQL 5.7)
+2021-04-01 10:49:27.596  INFO 268412 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `db_data_news`: 20210327.01
+2021-04-01 10:49:27.598  INFO 268412 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema `db_data_news` is up to date. No migration necessary.
+2021-04-01 10:49:27.663  INFO 268412 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-01 10:49:27.708  INFO 268412 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-01 10:49:27.872  INFO 268412 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-01 10:49:27.975  INFO 268412 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2021-04-01 10:49:28.645  INFO 268412 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-01 10:49:28.654  INFO 268412 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-01 10:49:28.724  WARN 268412 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-01 10:49:28.772  INFO 268412 --- [restartedMain] c.x.m.c.a.m.config.XtCommonRabbitConfig  : xtCommonRabbitConnectionFactory, host:192.168.2.3, username:data-news, virtualHost:/common
+2021-04-01 10:49:29.215  INFO 268412 --- [restartedMain] c.x.d.news.plugin.news.BaseNewsPlugin    : find database channelPluginIds:[]
+2021-04-01 10:49:29.216  INFO 268412 --- [restartedMain] c.x.m.c.app.config.NewsPluginFactory     : init news plugins
+2021-04-01 10:49:29.216  INFO 268412 --- [restartedMain] c.x.m.c.app.config.NewsPluginFactory     : init add news plugin, id:purchaseOrderNews, name:采购订单完成, channelPluginIds:[], class:class com.xt.data.news.plugin.news.PurchaseOrderNewsPlugin
+2021-04-01 10:49:29.246  INFO 268412 --- [restartedMain] c.x.m.c.app.config.ChannelPluginFactory  : init news plugins
+2021-04-01 10:49:29.246  INFO 268412 --- [restartedMain] c.x.m.c.app.config.ChannelPluginFactory  : init add news plugin, id:purchaseSeriesUpDown, name:采购连续涨跌, domain:purchase, timer:null, class:class com.xt.data.news.plugin.channel.PurchaseSeriesUpDownChannelPlugin
+2021-04-01 10:49:29.486  INFO 268412 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@36913e8b, org.springframework.security.web.context.SecurityContextPersistenceFilter@3cf9a8b1, org.springframework.security.web.header.HeaderWriterFilter@28d46f54, org.springframework.security.web.authentication.logout.LogoutFilter@413fd3ee, com.xt.message.center.app.auth.SecurityAuthenticationTokenFilter@1580159e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a9e9992, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d3dfbc0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79173a6d, org.springframework.security.web.session.SessionManagementFilter@cefa5e3, org.springframework.security.web.access.ExceptionTranslationFilter@4abcc6b8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f30007]
+2021-04-01 10:49:29.644  INFO 268412 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-01 10:49:30.159  INFO 268412 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-01 10:49:30.242  INFO 268412 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2021-04-01 10:49:30.297  WARN 268412 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2021-04-01 10:49:30.302  INFO 268412 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-01 10:49:30.476  INFO 268412 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 6600 (http) with context path ''
+2021-04-01 10:49:30.544  INFO 268412 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 10:49:30.578  INFO 268412 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: xtCommonRabbitConnectionFactory#4ff8bae:0/SimpleConnection@6e81c0c8 [delegate=amqp://data-news@192.168.2.3:5672//common, localPort= 60851]
+2021-04-01 10:49:30.656  INFO 268412 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : Started DataNewsApplication in 7.354 seconds (JVM running for 8.384)
+2021-04-01 10:49:31.060  INFO 268412 --- [RMI TCP Connection(1)-192.168.10.67] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-01 10:49:31.061  INFO 268412 --- [RMI TCP Connection(1)-192.168.10.67] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-01 10:49:31.062  INFO 268412 --- [RMI TCP Connection(1)-192.168.10.67] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-04-01 10:52:58.503 DEBUG 268412 --- [http-nio-6600-exec-1] c.x.m.center.app.auth.JwtTokenHelper     : get jwt header key:Authorization
+2021-04-01 11:03:58.957  INFO 268412 --- [SpringContextShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2021-04-01 11:03:59.259  INFO 268412 --- [SpringContextShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2021-04-01 11:03:59.285  INFO 268412 --- [SpringContextShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2021-04-01 11:04:00.157  INFO 268412 --- [SpringContextShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2021-04-01 11:04:00.222  INFO 268412 --- [SpringContextShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2021-04-01 11:04:00.223  INFO 268412 --- [SpringContextShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is not active already
+2021-04-01 11:04:00.223  INFO 268412 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-04-01 11:04:00.233  INFO 268412 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-04-01 11:04:00.238  INFO 268412 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-04-01 11:04:00.241  INFO 268412 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-04-01 11:04:05.337  INFO 33824 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : Starting DataNewsApplication using Java 1.8.0_241 on PC-20200618SSUW with PID 33824 (G:\xt-data-news\com.xt.data.news\com.xt.data.news.app\target\classes started by Administrator in G:\xt-data-news)
+2021-04-01 11:04:05.341 DEBUG 33824 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : Running with Spring Boot v2.4.3, Spring v5.3.4
+2021-04-01 11:04:05.342  INFO 33824 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : No active profile set, falling back to default profiles: default
+2021-04-01 11:04:05.419  INFO 33824 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-04-01 11:04:05.419  INFO 33824 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-04-01 11:04:06.748  INFO 33824 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-04-01 11:04:06.770  INFO 33824 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 JPA repository interfaces.
+2021-04-01 11:04:07.027  INFO 33824 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=48b605b0-fa7f-308f-9f11-59da71d67a5f
+2021-04-01 11:04:07.207  INFO 33824 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@7659d6e8' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-01 11:04:07.213  INFO 33824 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-04-01 11:04:07.663  INFO 33824 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 6600 (http)
+2021-04-01 11:04:07.673  INFO 33824 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-04-01 11:04:07.673  INFO 33824 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-04-01 11:04:07.784  INFO 33824 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-04-01 11:04:07.784  INFO 33824 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2364 ms
+2021-04-01 11:04:07.941  INFO 33824 --- [restartedMain] o.s.boot.web.servlet.RegistrationBean    : Filter securityAuthenticationTokenFilter was not registered (disabled)
+2021-04-01 11:04:08.056  INFO 33824 --- [restartedMain] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 7.1.1 by Redgate
+2021-04-01 11:04:08.062  INFO 33824 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-04-01 11:04:08.064  WARN 33824 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2021-04-01 11:04:08.399  INFO 33824 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-04-01 11:04:08.427  INFO 33824 --- [restartedMain] o.f.c.i.database.base.DatabaseType       : Database: jdbc:mysql://192.168.2.127:3306/db_data_news (MySQL 5.7)
+2021-04-01 11:04:08.484  INFO 33824 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Current version of schema `db_data_news`: 20210327.01
+2021-04-01 11:04:08.485  INFO 33824 --- [restartedMain] o.f.core.internal.command.DbMigrate      : Schema `db_data_news` is up to date. No migration necessary.
+2021-04-01 11:04:08.550  INFO 33824 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-04-01 11:04:08.594  INFO 33824 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-04-01 11:04:08.744  INFO 33824 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-04-01 11:04:08.838  INFO 33824 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2021-04-01 11:04:09.455  INFO 33824 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-04-01 11:04:09.464  INFO 33824 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-04-01 11:04:09.525  WARN 33824 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-04-01 11:04:09.573  INFO 33824 --- [restartedMain] c.x.m.c.a.m.config.XtCommonRabbitConfig  : xtCommonRabbitConnectionFactory, host:192.168.2.3, username:data-news, virtualHost:/common
+2021-04-01 11:04:10.022  INFO 33824 --- [restartedMain] c.x.d.news.plugin.news.BaseNewsPlugin    : find database channelPluginIds:[]
+2021-04-01 11:04:10.022  INFO 33824 --- [restartedMain] c.x.m.c.app.config.NewsPluginFactory     : init news plugins
+2021-04-01 11:04:10.023  INFO 33824 --- [restartedMain] c.x.m.c.app.config.NewsPluginFactory     : init add news plugin, id:purchaseOrderNews, name:采购订单完成, channelPluginIds:[], class:class com.xt.data.news.plugin.news.PurchaseOrderNewsPlugin
+2021-04-01 11:04:10.052  INFO 33824 --- [restartedMain] c.x.m.c.app.config.ChannelPluginFactory  : init news plugins
+2021-04-01 11:04:10.052  INFO 33824 --- [restartedMain] c.x.m.c.app.config.ChannelPluginFactory  : init add news plugin, id:purchaseSeriesUpDown, name:采购连续涨跌, domain:purchase, timer:null, class:class com.xt.data.news.plugin.channel.PurchaseSeriesUpDownChannelPlugin
+2021-04-01 11:04:10.274  INFO 33824 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3367dcd9, org.springframework.security.web.context.SecurityContextPersistenceFilter@64df854e, org.springframework.security.web.header.HeaderWriterFilter@4301a7ea, org.springframework.security.web.authentication.logout.LogoutFilter@4cf61c5c, com.xt.message.center.app.auth.SecurityAuthenticationTokenFilter@38a7e5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72637664, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@25725c9c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2f6a7398, org.springframework.security.web.session.SessionManagementFilter@75ad9b2a, org.springframework.security.web.access.ExceptionTranslationFilter@2ce4ebe6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@78dc148d]
+2021-04-01 11:04:10.420  INFO 33824 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-04-01 11:04:10.918  INFO 33824 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-04-01 11:04:11.000  INFO 33824 --- [restartedMain] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2021-04-01 11:04:11.055  WARN 33824 --- [restartedMain] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2021-04-01 11:04:11.060  INFO 33824 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-04-01 11:04:11.238  INFO 33824 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 6600 (http) with context path ''
+2021-04-01 11:04:11.306  INFO 33824 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: 192.168.2.3:5672
+2021-04-01 11:04:11.340  INFO 33824 --- [restartedMain] o.s.a.r.c.CachingConnectionFactory       : Created new connection: xtCommonRabbitConnectionFactory#5ee7a836:0/SimpleConnection@4c248235 [delegate=amqp://data-news@192.168.2.3:5672//common, localPort= 61140]
+2021-04-01 11:04:11.435  INFO 33824 --- [restartedMain] c.x.m.center.app.DataNewsApplication     : Started DataNewsApplication in 6.949 seconds (JVM running for 7.95)
+2021-04-01 11:04:11.800  INFO 33824 --- [RMI TCP Connection(1)-192.168.10.67] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-04-01 11:04:11.800  INFO 33824 --- [RMI TCP Connection(1)-192.168.10.67] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-04-01 11:04:11.802  INFO 33824 --- [RMI TCP Connection(1)-192.168.10.67] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-04-01 11:04:19.131 DEBUG 33824 --- [http-nio-6600-exec-1] c.x.m.center.app.auth.JwtTokenHelper     : get jwt header key:Authorization

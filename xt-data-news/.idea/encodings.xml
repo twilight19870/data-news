@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/code-generate/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/code-generate/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.app/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.http/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.mq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.dao/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.entity/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.service.impl/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.channel/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.news/src/main/java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

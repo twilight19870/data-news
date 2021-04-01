@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="com.xt.data.news.client.mq" />
+        <module name="com.xt.data.news.client.core" />
+        <module name="code-generate" />
+        <module name="com.xt.data.news.service" />
+        <module name="com.xt.data.news.app" />
+        <module name="com.xt.data.news.entity" />
+        <module name="com.xt.data.news.plugin.news" />
+        <module name="com.xt.data.news.common" />
+        <module name="com.xt.data.news.client.http" />
+        <module name="com.xt.data.news.api" />
+        <module name="com.xt.data.news.service.impl" />
+        <module name="com.xt.data.news.dao" />
+        <module name="com.xt.data.news.plugin.channel" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="code-generate" target="1.8" />
+      <module name="com.xt.data.news" target="1.8" />
+      <module name="com.xt.data.news.api" target="1.8" />
+      <module name="com.xt.data.news.app" target="1.8" />
+      <module name="com.xt.data.news.client" target="1.8" />
+      <module name="com.xt.data.news.client.core" target="1.8" />
+      <module name="com.xt.data.news.client.http" target="1.8" />
+      <module name="com.xt.data.news.client.mq" target="1.8" />
+      <module name="com.xt.data.news.common" target="1.8" />
+      <module name="com.xt.data.news.dao" target="1.8" />
+      <module name="com.xt.data.news.entity" target="1.8" />
+      <module name="com.xt.data.news.module" target="1.8" />
+      <module name="com.xt.data.news.plugin" target="1.8" />
+      <module name="com.xt.data.news.plugin.channel" target="1.8" />
+      <module name="com.xt.data.news.plugin.news" target="1.8" />
+      <module name="com.xt.data.news.service" target="1.8" />
+      <module name="com.xt.data.news.service.impl" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="code-generate" options="-parameters" />
+      <module name="com.xt.data.news.api" options="-parameters" />
+      <module name="com.xt.data.news.app" options="-parameters" />
+      <module name="com.xt.data.news.client.core" options="-parameters" />
+      <module name="com.xt.data.news.client.http" options="-parameters" />
+      <module name="com.xt.data.news.client.mq" options="-parameters" />
+      <module name="com.xt.data.news.common" options="-parameters" />
+      <module name="com.xt.data.news.dao" options="-parameters" />
+      <module name="com.xt.data.news.entity" options="-parameters" />
+      <module name="com.xt.data.news.plugin.channel" options="-parameters" />
+      <module name="com.xt.data.news.plugin.news" options="-parameters" />
+      <module name="com.xt.data.news.service" options="-parameters" />
+      <module name="com.xt.data.news.service.impl" options="-parameters" />
+    </option>
+  </component>
+</project>

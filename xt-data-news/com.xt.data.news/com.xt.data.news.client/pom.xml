@@ -1,0 +1,18 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.xt</groupId>
+		<artifactId>com.xt.data.news</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>com.xt.data.news.client</artifactId>
+	<packaging>pom</packaging>
+ 
+	<modules>
+		<module>com.xt.data.news.client.core</module>
+		<module>com.xt.data.news.client.http</module>
+		<module>com.xt.data.news.client.mq</module>
+	</modules>
+</project>

@@ -1,0 +1,1 @@
+<#if (col.columnDefault)?? && col.columnDefault!=''><#if col.columnDefault?index_of('CURRENT_')==0> = new ${Util.string.last(Util.jdbc.toJdbcClassByType(col.dataType),"\\.")}()<#elseif col.dataType=='VARCHAR' || col.dataType=='CHAR'>  = "${col.columnDefault}"<#elseif col.dataType=='BIT'><#else> = ${col.columnDefault}</#if></#if>

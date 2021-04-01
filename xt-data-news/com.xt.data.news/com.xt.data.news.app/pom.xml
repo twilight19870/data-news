@@ -1,0 +1,256 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.xt</groupId>
+		<artifactId>com.xt.data.news</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>com.xt.data.news.app</artifactId>
+
+	<properties>
+		<!-- docker -->
+		<docker.repositorie.url>192.168.2.79</docker.repositorie.url>
+		<docker.username>vivi207</docker.username>
+		<docker.password>Az123456</docker.password>
+	</properties>
+
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.xt</groupId>
+			<artifactId>com.xt.data.news.common</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xt</groupId>
+			<artifactId>com.xt.data.news.api</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		
+		<!-- plugins -->
+		<dependency>
+			<groupId>com.xt</groupId>
+			<artifactId>com.xt.data.news.plugin.news</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.xt</groupId>
+			<artifactId>com.xt.data.news.plugin.channel</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+		<!-- <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+        <dependency>
+		    <groupId>com.auth0</groupId>
+		    <artifactId>java-jwt</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<eureka.client.enabled>false</eureka.client.enabled>
+				<eureka.client.service-url.defaultZone>http://192.168.2.30:8761/eureka/</eureka.client.service-url.defaultZone>
+				<spring.cloud.config.enabled>false</spring.cloud.config.enabled>
+				<spring.cloud.config.discovery.enabled>false</spring.cloud.config.discovery.enabled>
+				<spring.cloud.config.username>config</spring.cloud.config.username>
+				<spring.cloud.config.password>config2433A</spring.cloud.config.password>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<eureka.client.enabled>false</eureka.client.enabled>
+				<eureka.client.service-url.defaultZone>http://192.168.2.30:8761/eureka/</eureka.client.service-url.defaultZone>
+				<spring.cloud.config.enabled>false</spring.cloud.config.enabled>
+				<spring.cloud.config.discovery.enabled>false</spring.cloud.config.discovery.enabled>
+				<spring.cloud.config.username>config</spring.cloud.config.username>
+				<spring.cloud.config.password>config2433A</spring.cloud.config.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<eureka.client.enabled>true</eureka.client.enabled>
+				<eureka.client.service-url.defaultZone>http://192.168.2.20:8761/eureka/</eureka.client.service-url.defaultZone>
+				<spring.cloud.config.enabled>true</spring.cloud.config.enabled>
+				<spring.cloud.config.discovery.enabled>true</spring.cloud.config.discovery.enabled>
+				<spring.cloud.config.username>config</spring.cloud.config.username>
+				<spring.cloud.config.password>config2433A</spring.cloud.config.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>verify</id>
+			<properties>
+				<eureka.client.enabled>true</eureka.client.enabled>
+				<eureka.client.service-url.defaultZone>http://192.168.2.46:8761/eureka/</eureka.client.service-url.defaultZone>
+				<spring.cloud.config.enabled>true</spring.cloud.config.enabled>
+				<spring.cloud.config.discovery.enabled>true</spring.cloud.config.discovery.enabled>
+				<spring.cloud.config.username>config</spring.cloud.config.username>
+				<spring.cloud.config.password>config2433A</spring.cloud.config.password>
+				<xt.auth.jwt.secretKey>jiix@7tyuGG#ssdfcvb</xt.auth.jwt.secretKey>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<eureka.client.enabled>true</eureka.client.enabled>
+				<eureka.client.service-url.defaultZone>http://172.18.57.133:8761/eureka/</eureka.client.service-url.defaultZone>
+				<spring.cloud.config.enabled>true</spring.cloud.config.enabled>
+				<spring.cloud.config.discovery.enabled>true</spring.cloud.config.discovery.enabled>
+				<spring.cloud.config.username>config</spring.cloud.config.username>
+				<spring.cloud.config.password>config2433A</spring.cloud.config.password>
+				<!-- docker -->
+				<docker.repositorie.url>registry.cn-shenzhen.aliyuncs.com</docker.repositorie.url>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<filtering>false</filtering>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>config/application.properties</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>timestamp-property</id>
+						<goals>
+							<goal>timestamp-property</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<name>current.time</name>
+					<pattern>yyyyMMddHH</pattern>
+					<timeZone>GMT+8</timeZone>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<from>
+						<image>registry.cn-shenzhen.aliyuncs.com/xt-basics/cn_jre8</image>
+					</from>
+					<to>
+						<image>${docker.repositorie.url}/xt-2b/xt-data-news</image>
+						<auth>
+							<username>${docker.username}</username>
+							<password>${docker.password}</password>
+						</auth>
+						<tags>
+							<tag>v${current.time}</tag>
+							<tag>latest</tag>
+						</tags>
+					</to>
+					<allowInsecureRegistries>true</allowInsecureRegistries>
+					<container>
+						<appRoot>/app/</appRoot>
+						<workingDirectory>/app/</workingDirectory>
+						<environment>
+							<TZ>Asia/Shanghai</TZ>
+						</environment>
+						<entrypoint>
+							<arg>/bin/sh</arg>
+							<arg>-c</arg>
+							<arg>java ${JAVA_OPS} -cp
+								/app/resources/:/app/classes/:/app/libs/*
+								com.xt.data.news.app.DataNewsApplication ${PROFILES}</arg>
+						</entrypoint>
+					</container>
+				</configuration>
+
+				<!--<executions><execution><phase>install</phase><goals><goal>build</goal></goals></execution></executions> -->
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<description>
+	<![CDATA[ 
+		mvn compile jib:build -DsendCredentialsOverHttp=true -Ptest
+        mvn compile jib:build -DsendCredentialsOverHttp=true -Pprod -Ddocker.username=*** -Ddocker.password=***
+        
+        docker pull 192.168.2.79/xt-2b/xt-data-news:latest
+    	docker run -d --name="xt-data-news" -m 3G -e JAVA_OPS="-Xms512m -Xmx2024m" -e PROFILES="--spring.profiles.active=docker --eureka.client.service-url.defaultZone=http://192.168.2.79:8761/eureka/ --eureka.client.enabled=true" -p 8182:8182 192.168.2.79/xt-2b/xt-data-news:latest
+    ]]>
+	</description>
+</project>

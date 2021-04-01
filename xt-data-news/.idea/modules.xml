@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/code-generate/code-generate.iml" filepath="$PROJECT_DIR$/com.xt.data.news/code-generate/code-generate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.api/com.xt.data.news.api.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.api/com.xt.data.news.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.app/com.xt.data.news.app.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.app/com.xt.data.news.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.core/com.xt.data.news.client.core.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.core/com.xt.data.news.client.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.http/com.xt.data.news.client.http.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.http/com.xt.data.news.client.http.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.mq/com.xt.data.news.client.mq.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.client/com.xt.data.news.client.mq/com.xt.data.news.client.mq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.common/com.xt.data.news.common.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.common/com.xt.data.news.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.dao/com.xt.data.news.dao.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.dao/com.xt.data.news.dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.entity/com.xt.data.news.entity.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.entity/com.xt.data.news.entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.module.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.channel/com.xt.data.news.plugin.channel.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.channel/com.xt.data.news.plugin.channel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.news/com.xt.data.news.plugin.news.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.plugin/com.xt.data.news.plugin.news/com.xt.data.news.plugin.news.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.service/com.xt.data.news.service.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.service/com.xt.data.news.service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.service.impl/com.xt.data.news.service.impl.iml" filepath="$PROJECT_DIR$/com.xt.data.news/com.xt.data.news.module/com.xt.data.news.service.impl/com.xt.data.news.service.impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/xt-data-news.iml" filepath="$PROJECT_DIR$/.idea/xt-data-news.iml" />
+    </modules>
+  </component>
+</project>

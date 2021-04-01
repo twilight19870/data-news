@@ -1,0 +1,5 @@
+
+mvn install:install-file -DgroupId=taobao -DartifactId=taobao-sdk-java-dev -Dversion=auto_1479188381469-20210317 -Dpackaging=jar -Dfile=taobao-sdk-java-auto_1479188381469-20210317.jar
+
+mvn deploy:deploy-file -Dmaven.test.skip=true -Dpackaging=jar -DrepositoryId=xt-hosted -Durl=http://192.168.2.5:8081/repository/xt-hosted/ -DgroupId=taobao -DartifactId=taobao-sdk-java-dev -Dversion=auto_1479188381469-20210317 -Dpackaging=jar -Dfile=taobao-sdk-java-auto_1479188381469-20210317.jar
+ 
